@@ -83,6 +83,16 @@ public class LibraryService {
     // --- Member Operations ---
 
     public Member registerMember(Member member) {
+        // Check for duplicates
+        for (Member m : members.values()) {
+            if (m.getEmail().equals(member.getEmail())) {
+                throw new IllegalArgumentException("Member with this email already exists");
+            }
+            if (m.getPhone().equals(member.getPhone())) {
+                throw new IllegalArgumentException("Member with this phone number already exists");
+            }
+        }
+        
         member.setId(nextMemberId++);
         members.put(member.getId(), member);
         return member;
@@ -104,6 +114,11 @@ public class LibraryService {
 
         if (book == null) return "Book not found";
         if (member == null) return "Member not found";
+
+        // Check if member already has this book
+        if (member.getCurrentBorrowedBooks().contains(bookId)) {
+            return "Member already has this book issued";
+        }
 
         if (book.getAvailableCopies() > 0) {
             book.setAvailableCopies(book.getAvailableCopies() - 1);

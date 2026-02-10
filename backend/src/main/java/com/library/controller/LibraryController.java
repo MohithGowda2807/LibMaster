@@ -7,6 +7,7 @@ import com.library.model.Reservation;
 import com.library.ds.CustomHashMap;
 import com.library.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,8 +51,12 @@ public class LibraryController {
     // --- Member Endpoints ---
 
     @PostMapping("/members")
-    public Member registerMember(@RequestBody Member member) {
-        return libraryService.registerMember(member);
+    public ResponseEntity<?> registerMember(@RequestBody Member member) {
+        try {
+            return ResponseEntity.ok(libraryService.registerMember(member));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/members")
