@@ -1,11 +1,8 @@
-# Build stage
-FROM eclipse-temurin:17-jdk-jammy AS build
+# Build stage using Maven image (wrapper not needed)
+FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
-# Ensure mvnw is executable
-RUN chmod +x mvnw
-# Build the application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Run stage
 FROM eclipse-temurin:17-jre-jammy
