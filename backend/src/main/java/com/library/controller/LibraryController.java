@@ -15,7 +15,6 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "${cors.allowed.origins:*}")
 public class LibraryController {
 
     @Autowired
