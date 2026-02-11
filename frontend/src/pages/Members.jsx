@@ -48,8 +48,12 @@ const Members = () => {
             setShowModal(false);
             setNewMember({ name: '', email: '', phone: '' });
             fetchMembers();
+            alert("Member Registered Successfully!");
         } catch (err) {
-            alert("Failed to register member");
+            console.error("Registration error", err);
+            // Display backend error message if available
+            const errorMessage = err.response?.data || "Failed to register member";
+            alert(errorMessage);
         }
     };
 
@@ -75,13 +79,31 @@ const Members = () => {
                     <h1 className="text-3xl font-bold text-slate-900">Member Directory</h1>
                     <p className="text-slate-500 mt-1">Manage library patrons</p>
                 </div>
-                <button
-                    onClick={() => setShowModal(true)}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm shadow-emerald-200"
-                >
-                    <UserPlus className="w-5 h-5" />
-                    <span>Register Member</span>
-                </button>
+                <div className="flex gap-3">
+                    <button
+                        onClick={async () => {
+                            try {
+                                const api = await import('../services/api');
+                                const res = await api.loadSampleMembers();
+                                alert(res.data.message);
+                                fetchMembers();
+                            } catch (err) {
+                                alert('Failed to load sample members');
+                            }
+                        }}
+                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm shadow-indigo-200"
+                    >
+                        <Users className="w-5 h-5" />
+                        <span>Load Sample Members</span>
+                    </button>
+                    <button
+                        onClick={() => setShowModal(true)}
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm shadow-emerald-200"
+                    >
+                        <UserPlus className="w-5 h-5" />
+                        <span>Register Member</span>
+                    </button>
+                </div>
             </div>
 
             {loading ? (

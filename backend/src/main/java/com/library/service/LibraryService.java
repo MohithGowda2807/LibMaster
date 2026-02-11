@@ -334,4 +334,51 @@ public class LibraryService {
         CustomLinkedList<Book> list = categoryIndex.get(category);
         return list != null ? list.toList() : new ArrayList<>();
     }
+    
+    // --- Sample Data Loading ---
+    
+    public List<Book> loadSampleBooks() {
+        List<Book> sampleBooks = new ArrayList<>();
+        
+        // 5 diverse books across different categories
+        sampleBooks.add(addBook(new Book(0, "To Kill a Mockingbird", "Harper Lee", "Fiction", 4, 4, 0)));
+        sampleBooks.add(addBook(new Book(0, "Introduction to Algorithms", "CLRS", "Tech", 3, 3, 0)));
+        sampleBooks.add(addBook(new Book(0, "Sapiens", "Yuval Noah Harari", "History", 5, 5, 0)));
+        sampleBooks.add(addBook(new Book(0, "The Art of War", "Sun Tzu", "Philosophy", 2, 2, 0)));
+        sampleBooks.add(addBook(new Book(0, "Thinking, Fast and Slow", "Daniel Kahneman", "Psychology", 3, 3, 0)));
+        
+        return sampleBooks;
+    }
+    
+    public List<Member> loadSampleMembers() {
+        List<Member> sampleMembers = new ArrayList<>();
+        
+        // 5 diverse sample members
+        try {
+            Member m1 = new Member(0, "Alice Johnson", "alice.j@example.com", "9876543210");
+            sampleMembers.add(registerMember(m1));
+        } catch (IllegalArgumentException e) { /* Already exists */ }
+        
+        try {
+            Member m2 = new Member(0, "Bob Smith", "bob.smith@example.com", "9765432109");
+            sampleMembers.add(registerMember(m2));
+        } catch (IllegalArgumentException e) { /* Already exists */ }
+        
+        try {
+            Member m3 = new Member(0, "Carol Williams", "carol.w@example.com", "9654321098");
+            sampleMembers.add(registerMember(m3));
+        } catch (IllegalArgumentException e) { /* Already exists */ }
+        
+        try {
+            Member m4 = new Member(0, "David Brown", "david.b@example.com", "9543210987");
+            sampleMembers.add(registerMember(m4));
+        } catch (IllegalArgumentException e) { /* Already exists */ }
+        
+        try {
+            Member m5 = new Member(0, "Emma Davis", "emma.d@example.com", "9432109876");
+            sampleMembers.add(registerMember(m5));
+        } catch (IllegalArgumentException e) { /* Already exists */ }
+        
+        return sampleMembers;
+    }
 }

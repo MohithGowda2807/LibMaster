@@ -1,10 +1,10 @@
-# Library Management System - Complete Project Documentation
+# LibMaster - Complete Project Documentation
 
 **Academic Year:** 2025-2026  
 **Course:** Data Structures Laboratory  
-**Project Type:** Comprehensive Library Management System  
-**Technology:** Java with Swing GUI  
-**Data Structures Implemented:** 8+ Core Structures  
+**Project Type:** Full-Stack Library Management System  
+**Technology Stack:** Spring Boot 3.2.3 + React 18 + Vite + Tailwind CSS  
+**Data Structures Implemented:** 7 Custom Structures  
 
 ---
 
@@ -17,29 +17,32 @@
 5. [Features & Functionality](#features--functionality)
 6. [System Architecture](#system-architecture)
 7. [Implementation Details](#implementation-details)
-8. [Data Persistence](#data-persistence)
+8. [API Documentation](#api-documentation)
 9. [Time Complexity Analysis](#time-complexity-analysis)
 10. [Syllabus Coverage](#syllabus-coverage)
 11. [User Interface](#user-interface)
 12. [Setup & Installation](#setup--installation)
-13. [Testing & Validation](#testing--validation)
-14. [Future Enhancements](#future-enhancements)
-15. [Conclusion](#conclusion)
+13. [Deployment](#deployment)
+14. [Testing & Validation](#testing--validation)
+15. [Future Enhancements](#future-enhancements)
+16. [Conclusion](#conclusion)
 
 ---
 
 ## Executive Summary
 
-This Library Management System is a comprehensive desktop application that demonstrates practical implementation of multiple data structures in a real-world scenario. The system manages books, members, lending operations, fine calculations, and generates various reports - all while leveraging different data structures for optimal performance.
+LibMaster is a modern, full-stack library management system that demonstrates practical implementation of multiple data structures in a real-world web application. The system manages books, members, circulation operations, fine calculations, and reservation queues - all while leveraging different data structures for optimal performance.
 
 ### Key Highlights
 
-- **8+ Data Structures** implemented and integrated
-- **6-Tab Professional GUI** for organized functionality
-- **Persistent Data Storage** using file I/O
+- **7 Custom Data Structures** implemented from scratch
+- **RESTful API** with Spring Boot backend
+- **Modern React Frontend** with Tailwind CSS
+- **Real-time Operations** with O(1) and O(log n) performance
+- **Production Deployment** on Render (backend) and Vercel (frontend)
 - **Complete CRUD Operations** for books and members
 - **Automated Fine Calculation** for overdue books
-- **Real-time Search** with multiple algorithms
+- **Advanced Search** with Trie-based autocomplete
 - **100% Syllabus Coverage** (Units I-V)
 
 ---
@@ -48,15 +51,15 @@ This Library Management System is a comprehensive desktop application that demon
 
 ### Motivation
 
-Libraries require efficient management of thousands of books and members, with operations requiring fast search, organized queuing, and priority-based handling. This project demonstrates how appropriate data structure selection dramatically improves system performance and user experience.
+Modern libraries require efficient management of thousands of books and members, with operations requiring fast search, organized queuing, and priority-based handling. This project demonstrates how appropriate data structure selection dramatically improves system performance in a web-based environment.
 
 ### Objectives
 
-1. **Implement** core data structures from syllabus in practical context
+1. **Implement** core data structures from syllabus in a modern web application
 2. **Demonstrate** efficiency gains through proper DS selection
-3. **Integrate** multiple structures working cohesively
-4. **Provide** professional user interface for library operations
-5. **Ensure** data persistence across sessions
+3. **Integrate** multiple structures working cohesively via REST API
+4. **Provide** professional React UI for library operations
+5. **Deploy** to production infrastructure
 
 ### Problem Statement
 
@@ -65,131 +68,156 @@ Traditional library management faces challenges:
 - **Inefficient member lookup** during borrowing
 - **Manual priority** for overdue books
 - **Poor organization** of waiting lists
-- **Data loss** on system restart
+- **Scalability issues** with client-server architecture
 
 ### Our Solution
 
-Strategic use of data structures:
-- **Hash Tables** → O(1) member & category lookup
-- **AVL Trees** → O(log n) guaranteed book search
-- **Priority Queues** → Automatic overdue prioritization
-- **Tries** → Intelligent autocomplete search
-- **Queues** → Fair FIFO reservation system
-- **File I/O** → Persistent data storage
+Strategic use of data structures with modern web architecture:
+- **CustomHashMap** → O(1) member & category lookup
+- **AVL Tree** → O(log n) guaranteed book search
+- **MinHeap (Priority Queue)** → Automatic overdue prioritization
+- **Trie** → Intelligent autocomplete search
+- **Circular Queue** → Fair FIFO reservation system
+- **REST API** → Stateless, scalable backend
+- **React SPA** → Fast, responsive user interface
 
 ---
 
 ## Technical Specifications
 
-### Development Environment
+### Backend Stack
 
-**Programming Language:** Java (JDK 8+)  
-**GUI Framework:** Swing (javax.swing)  
-**IDE:** Any Java IDE (Eclipse, IntelliJ, VS Code, NetBeans)  
-**Build Tool:** javac (command-line compilation)  
-**Operating System:** Cross-platform (Windows, Mac, Linux)  
+**Framework:** Spring Boot 3.2.3  
+**Language:** Java 17  
+**Build Tool:** Maven 3.8+  
+**Architecture:** RESTful API with custom data structures  
+**Deployment:** Render (Cloud Platform)  
+
+**Dependencies:**
+- `spring-boot-starter-web` - REST API support
+- `spring-boot-starter-validation` - Input validation
+- `spring-boot-starter-test` - Testing framework
+
+### Frontend Stack
+
+**Framework:** React 18.2.0  
+**Build Tool:** Vite 5.4.21  
+**Styling:** Tailwind CSS 3.4.19  
+**HTTP Client:** Axios 1.6.7  
+**Routing:** React Router DOM 6.22.3  
+**Animations:** Framer Motion 11.0.8  
+**Icons:** Lucide React 0.344.0  
+**Deployment:** Vercel  
 
 ### System Requirements
 
 **Minimum:**
-- Java Runtime Environment (JRE) 8 or higher
+- Java Runtime Environment (JRE) 17
+- Node.js 16+
 - 512 MB RAM
-- 50 MB disk space
-
-**Recommended:**
-- Java Development Kit (JDK) 11+
-- 1 GB RAM
 - 100 MB disk space
 
-### Technology Stack
+**Recommended:**
+- Java Development Kit (JDK) 17+
+- Node.js 18+
+- 2 GB RAM
+- 500 MB disk space
+
+### Technology Architecture
 
 ```
-┌─────────────────────────────────────┐
-│     Presentation Layer (GUI)         │
-│         Java Swing                   │
-├─────────────────────────────────────┤
-│     Business Logic Layer             │
-│   - Book Management                  │
-│   - Member Management                │
-│   - Issue/Return Logic               │
-│   - Fine Calculation                 │
-├─────────────────────────────────────┤
-│     Data Structure Layer             │
-│  Hash Table | AVL | Trie | Queue    │
-│  BST | Heap | Stack | Linked List   │
-├─────────────────────────────────────┤
-│     Data Persistence Layer           │
-│  BufferedReader/Writer (File I/O)   │
-└─────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│     Frontend (React + Vite)             │
+│     Tailwind CSS + Framer Motion        │
+├─────────────────────────────────────────┤
+│     HTTP/REST Communication (Axios)     │
+├─────────────────────────────────────────┤
+│     Backend (Spring Boot)               │
+│     REST Controllers + Service Layer    │
+├─────────────────────────────────────────┤
+│     Custom Data Structures Layer        │
+│  AVL | Trie | Heap | Queue | HashMap   │
+│  LinkedList | Stack | BST              │
+├─────────────────────────────────────────┤
+│     Model Layer                         │
+│  Book | Member | IssueRecord | Etc.    │
+└─────────────────────────────────────────┘
 ```
 
 ---
 
 ## Data Structures Implementation
 
-### 1. Hash Table - Member & Category Management
+### 1. CustomHashMap - Member & Category Management
 
-**File:** `MemberManager.java`, `BookHashTable.java`
+**File:** `CustomHashMap.java`
 
 **Purpose:**  
-Lightning-fast O(1) lookup for members by ID and books by category.
+Generic hash map implementation for O(1) member lookup and category indexing.
 
 **Implementation Details:**
 
 ```java
-// Member Management - HashMap
-private Map<Integer, Member> members;  // Built-in Java HashMap
-
-// Category Index - Custom Hash Table
-private LinkedList<Book>[] table;  // Array of linked lists
-private static final int TABLE_SIZE = 10;
-
-// Hash Function
-private int hash(String category) {
-    return Math.abs(category.hashCode()) % TABLE_SIZE;
+public class CustomHashMap<K, V> {
+    private static final int DEFAULT_CAPACITY = 16;
+    private static final float LOAD_FACTOR = 0.75f;
+    
+    private Entry<K, V>[] table;
+    private int size = 0;
+    
+    // Hash Function
+    private int hash(K key) {
+        return Math.abs(key.hashCode()) % table.length;
+    }
+    
+    // Separate Chaining for collision resolution
+    private static class Entry<K, V> {
+        K key;
+        V value;
+        Entry<K, V> next;
+    }
 }
 ```
 
-**Collision Resolution:**  
-Separate Chaining (Open Hashing) - Each bucket contains a linked list of entries.
+**Collision Resolution:** Separate Chaining (linked list per bucket)
 
 **Use Cases:**
-- Register member → O(1) insertion
-- Find member by ID → O(1) lookup
-- Books by category → O(1) to find bucket
+- Store members by ID → O(1) lookup
+- Index books by category → O(1) category filter
+- Track reservations per book → O(1) access
 
 **Advantages:**
 - Constant time operations on average
-- Dynamic sizing capability
-- Efficient for large datasets
+- Dynamic resizing capability
+- Generic implementation (reusable)
 
 **Real-World Justification:**  
-"When a member arrives to borrow a book, librarian needs instant ID lookup from thousands of members - hash table provides this in O(1) time vs O(n) linear search."
+"When a member arrives to borrow a book, system needs instant ID lookup from thousands of members - hash map provides this in O(1) time vs O(n) linear search."
 
 ---
 
 ### 2. AVL Tree - Balanced Book Search
 
-**File:** `BookAVL.java`
+**File:** `AVLTree.java`
 
 **Purpose:**  
-Guaranteed O(log n) book search even with sequential ID insertions.
+Self-balancing binary search tree for guaranteed O(log n) book lookups.
 
 **Implementation Details:**
 
 ```java
-class AVLNode {
-    int bookId;
-    Book bookRef;
+class Node {
+    int key;        // Book ID
+    Book value;
     int height;
-    AVLNode left, right;
+    Node left, right;
 }
 
 // Balance Factor
 balanceFactor = height(left) - height(right)
 AVL Property: |balanceFactor| ≤ 1
 
-// Rotations
+// Four Rotation Cases
 - Left-Left → Right Rotation
 - Right-Right → Left Rotation  
 - Left-Right → Left + Right Rotation
@@ -197,12 +225,12 @@ AVL Property: |balanceFactor| ≤ 1
 ```
 
 **Self-Balancing Mechanism:**  
-After every insertion/deletion, tree checks balance factor and performs rotations to maintain height balance.
+After every insertion, tree checks balance factor at each node and performs rotations to maintain height balance.
 
-**Use Cases:**
-- Search book by ID → O(log n)
-- Range queries → O(log n + k)
-- Sorted traversal → O(n)
+**Operations:**
+- Insert: O(log n) guaranteed
+- Search: O(log n) guaranteed
+- In-order traversal: O(n)
 
 **Comparison with BST:**
 
@@ -210,125 +238,113 @@ After every insertion/deletion, tree checks balance factor and performs rotation
 |----------|---------------|---------------|
 | Sequential insertion | O(n) | O(log n) |
 | Search | O(n) | O(log n) |
-| Deletion | O(n) | O(log n) |
+| Height | n | log n |
 
 **Real-World Justification:**  
-"If library adds books with ascending IDs (101, 102, 103...), regular BST degenerates to linked list. AVL automatically rebalances, maintaining O(log n) search."
+"If library adds books with ascending IDs (101, 102, 103...), regular BST degenerates to linked list with O(n) search. AVL automatically rebalances, maintaining O(log n) performance."
 
 ---
 
 ### 3. Binary Search Tree (BST) - Basic Book Index
 
-**File:** `BookBST.java`
+**File:** `BinarySearchTree.java`
 
 **Purpose:**  
-Fundamental tree-based book search structure.
+Demonstrates fundamental tree-based search (educational comparison with AVL).
 
-**Implementation Details:**
+**Implementation:**
 
 ```java
 class Node {
-    int bookId;
-    Book bookRef;
+    int key;
+    Book value;
     Node left, right;
 }
 
 // Search Algorithm
-- If bookId < node.bookId → search left
-- If bookId > node.bookId → search right
-- If bookId == node.bookId → found
+- If key < node.key → search left
+- If key > node.key → search right
+- If key == node.key → found
 ```
 
 **Operations:**
 - Insert: O(log n) average, O(n) worst
 - Search: O(log n) average, O(n) worst
-- Delete: O(log n) average, O(n) worst
-
-**Traversals Implemented:**
-- **Inorder:** Left → Root → Right (sorted output)
-- **Preorder:** Root → Left → Right  
-- **Postorder:** Left → Right → Root
 
 **Use Cases:**
-- Quick book search when IDs are random
-- Sorted book listing (inorder traversal)
 - Demonstrates basic tree concepts
-
-**Real-World Justification:**  
-"BST provides faster search than linear list while being simpler than AVL. Good for moderate-sized libraries with random book additions."
+- Educational comparison with AVL performance
+- Sorted book listing (in-order traversal)
 
 ---
 
-### 4. Priority Queue (Min-Heap) - Fine Management
+### 4. MinHeap - Priority Queue for Fines
 
-**File:** `FineManager.java`
+**File:** `MinHeap.java`
 
 **Purpose:**  
-Automatically sort overdue books by urgency (days overdue).
+Priority queue implementation to automatically sort overdue books by fine amount (highest fine = highest priority).
 
-**Implementation Details:**
+**Implementation:**
 
 ```java
-class OverdueBook {
-    int bookId;
-    String borrowerName;
-    int daysOverdue;  // Priority key
-    double fine;
-}
-
-// Min-Heap Property
-parent.daysOverdue ≤ child.daysOverdue
-
-// Heap Operations
-insert(book): 
-    1. Add to end
-    2. Heapify up (bubble up)
+public class MinHeap<T extends Comparable<T>> {
+    private T[] heap;
+    private int size;
     
-extractMin():
-    1. Remove root (minimum)
-    2. Move last to root
-    3. Heapify down (bubble down)
+    // Heap Property: parent <= children
+    // Array representation: parent at i, children at 2i+1 and 2i+2
+    
+    public void insert(T element) {
+        heap[size++] = element;
+        heapifyUp(size - 1);
+    }
+    
+    public T extractMin() {
+        T min = heap[0];
+        heap[0] = heap[--size];
+        heapifyDown(0);
+        return min;
+    }
+}
 ```
 
 **Heap Structure:**
 ```
-       [5 days]
-      /         \
-  [12 days]   [8 days]
-   /    \      /    \
-[15]  [20]  [10]  [25]
+        [₹25]          (Lowest fine)
+       /     \
+   [₹75]     [₹50]
+   /   \     /
+[₹100][₹150][₹200]
 ```
 
 **Operations:**
 - Insert: O(log n)
 - Extract Min: O(log n)
 - Peek Min: O(1)
-- Heap Sort: O(n log n)
 
-**Use Cases:**
-- View most urgent overdue books first
-- Librarian prioritization system
-- Demonstration of heap sort
+**Application:**  
+`OverdueRecord` objects are inserted into heap with `compareTo()` based on fine amount. Extracting from heap gives books sorted by urgency (highest fines first).
 
 **Real-World Justification:**  
-"Librarian needs to contact members with most overdue books first. Priority queue automatically keeps most urgent cases at top, no manual sorting needed."
+"Librarian needs to contact members with highest overdue fines first. Min-heap automatically keeps most urgent cases at top, no manual sorting needed."
 
 ---
 
 ### 5. Trie - Book Title Autocomplete
 
-**File:** `BookTrie.java`
+**File:** `Trie.java`
 
 **Purpose:**  
-Efficient prefix-based title search and autocomplete.
+Prefix-based search tree for efficient title autocomplete functionality.
 
-**Implementation Details:**
+**Implementation:**
 
 ```java
 class TrieNode {
-    Map<Character, TrieNode> children;
+    Map<Character, TrieNode> children = new HashMap<>();
     boolean isEndOfWord;
-    Book book;
+    Book book;  // Store book reference at word end
 }
 
 // Example: "Harry Potter"
@@ -349,29 +365,44 @@ root
 **Use Cases:**
 - Type "Ha" → suggests "Harry Potter", "Hard Times"
 - Partial title search
-- Fast lookup vs scanning all titles
+- Smart search suggestions
 
 **Real-World Justification:**  
-"Users rarely remember exact book titles. Trie enables Google-like search suggestions where typing few letters shows matching books instantly."
+"Users rarely remember exact book titles. Trie enables Google-like search suggestions where typing few letters shows matching books instantly, providing better UX than exact match search."
 
 ---
 
-### 6. Queue (Circular) - Reservation System
+### 6. CircularQueue - Reservation System
 
-**File:** `IssueQueue.java`
+**File:** `CircularQueue.java`
 
 **Purpose:**  
-Fair FIFO (First In First Out) waiting list for unavailable books.
+FIFO queue for fair book reservation waiting lists.
 
-**Implementation Details:**
+**Implementation:**
 
 ```java
-private int[] queue;
-private int front, rear, size;
-
-// Circular Queue (maximizes array usage)
-rear = (rear + 1) % capacity
-front = (front + 1) % capacity
+public class CircularQueue<T> {
+    private T[] queue;
+    private int front = 0;
+    private int rear = 0;
+    private int size = 0;
+    private int capacity;
+    
+    // Circular wrapping
+    public void enqueue(T element) {
+        queue[rear] = element;
+        rear = (rear + 1) % capacity;
+        size++;
+    }
+    
+    public T dequeue() {
+        T element = queue[front];
+        front = (front + 1) % capacity;
+        size--;
+        return element;
+    }
+}
 ```
 
 **Operations:**
@@ -381,29 +412,36 @@ front = (front + 1) % capacity
 
 **Use Cases:**
 - All book copies issued → add members to queue
-- Book returned → notify first person in queue
-- Fair allocation (no queue jumping)
+- Book returned → auto-issue to first person in queue
+- Fair allocation (FIFO - no queue jumping)
 
 **Real-World Justification:**  
-"When bestseller has all copies issued, members reserve in order. Queue ensures first come first served - fair and efficient."
+"When bestseller has all copies issued, members reserve in order. CircularQueue ensures first come first served - fair and efficient with optimal space usage."
 
 ---
 
-### 7. Stack - Undo Operations
+### 7. CustomStack - Operation Tracking
 
-**File:** `UndoStack.java`
+**File:** `CustomStack.java`
 
 **Purpose:**  
-LIFO (Last In First Out) structure for un-issuing books.
+LIFO structure for tracking recent operations (audit/undo capability).
 
-**Implementation Details:**
+**Implementation:**
 
 ```java
-private int[] stack;
-private int top = -1;
-
-push(bookId): stack[++top] = bookId
-pop(): return stack[top--]
+public class CustomStack<T> {
+    private T[] stack;
+    private int top = -1;
+    
+    public void push(T element) {
+        stack[++top] = element;
+    }
+    
+    public T pop() {
+        return stack[top--];
+    }
+}
 ```
 
 **Operations:**
@@ -412,49 +450,43 @@ pop(): return stack[top--]
 - Peek: O(1)
 
 **Use Cases:**
-- Issue book → push ID to stack
-- Undo → pop ID and return book
-- Accidental issue correction
-
-**Real-World Justification:**  
-"Librarian accidentally issues book to wrong member. Undo feature (stack) instantly reverses last action without manual tracking."
+- Track issue operations
+- Store action logs
+- Potential undo functionality
 
 ---
 
-### 8. Singly Linked List - Primary Book Storage
+### 8. CustomLinkedList - Primary Storage
 
-**File:** `BookLinkedList.java`
+**File:** `CustomLinkedList.java`
 
 **Purpose:**  
-Dynamic linear storage of all books.
+Generic singly linked list for dynamic linear storage.
 
-**Implementation Details:**
+**Implementation:**
 
 ```java
-class Book {
-    int bookId;
-    String title;
-    String author;
-    // ... other fields
-    Book next;  // Pointer to next book
+public class CustomLinkedList<T> {
+    private class Node {
+        T data;
+        Node next;
+    }
+    
+    private Node head;
+    private int size = 0;
 }
-
-Book head;  // First book in list
 ```
 
 **Operations:**
 - Add: O(1) at head, O(n) at tail
-- Delete: O(n)
+- Remove: O(n)
 - Search: O(n)
-- Display: O(n)
+- toList(): O(n) conversion to ArrayList
 
 **Use Cases:**
-- Store all books linearly
-- Iterate through all books
-- Display complete book list
-
-**Real-World Justification:**  
-"Need flexible book storage without fixed size. Linked list grows/shrinks dynamically as books added/removed."
+- Primary book storage
+- Issue record storage
+- Category bucket storage in hash table
 
 ---
 
@@ -463,456 +495,434 @@ Book head;  // First book in list
 ### Module 1: Book Management
 
 #### 1.1 Add Book
-**Data Structures Used:** SLL, BST, AVL, Hash Table, Trie
+**Data Structures Used:** CustomLinkedList, AVL Tree, Trie, CustomHashMap
+
+**API Endpoint:** `POST /api/books`
+
+**Request Body:**
+```json
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "category": "Tech",
+  "totalCopies": 5,
+  "availableCopies": 5
+}
+```
 
 **Process:**
-1. Accept: ID, Title, Author, Category, Copies
-2. Create Book object
+1. Validate input (non-empty title/author)
+2. Auto-generate book ID (101, 102, 103...)
 3. Insert into:
-   - Linked List (primary storage)
-   - BST & AVL (search indexes)
-   - Hash Table (category index)
-   - Trie (title autocomplete)
+   - LinkedList (primary storage) → O(1)
+   - AVL Tree (search index by ID) → O(log n)
+   - Trie (title autocomplete) → O(m)
+   - CategoryIndex HashMap → O(1)
 
-**Code Flow:**
-```java
-Book book = new Book(id, title, author, category, copies);
-bookList.addBook(...);           // O(n)
-bookBST.insert(id, book);        // O(log n) avg
-avlTree.insert(id, book);        // O(log n) guaranteed
-categoryIndex.insert(book);      // O(1) avg
-titleSearch.insert(book);        // O(m)
-```
+**Response:** Book object with assigned ID
 
-**Validation:**
-- Unique book ID
-- Non-empty title/author
-- Positive copies count
+#### 1.2 Get All Books
+**API Endpoint:** `GET /api/books`
 
-#### 1.2 Update Book
-**Process:**
-- Search book by ID → O(log n)
-- Modify copies count
-- Update availability
-- Auto-save changes
+**Response:** Array of all books from linked list traversal
 
-**Use Case:** Library acquires more copies of popular book
+#### 1.3 Get Book by ID
+**API Endpoint:** `GET /api/books/{id}`
 
-#### 1.3 Delete Book
-**Data Structures Updated:** All structures
+**Process:** AVL tree search → O(log n)
 
-**Constraints:**
-- Cannot delete if copies currently issued
-- Removes from all indexes
+#### 1.4 Search Books
+**API Endpoint:** `GET /api/books/search?q={query}`
 
 **Process:**
-1. Search and validate
-2. Remove from linked list
-3. Remove from BST, AVL, Hash, Trie
-4. Confirm deletion
+1. If query is numeric → try AVL search by ID
+2. Else → Trie prefix search for title match
 
-#### 1.4 Display All Books
-**Data Structure:** Singly Linked List
+**Time:** O(log n) for ID, O(p + k) for title
 
-**Output Format:**
-```
-ID: 101, Title: Harry Potter, Author: J.K. Rowling
-Category: Fiction, Available: 3/5, Issued: 124 times
-```
+#### 1.5 Get Books by Category
+**API Endpoint:** `GET /api/books/category/{category}`
 
-**Traversal:** O(n) linear iteration
-
-#### 1.5 View by Category
-**Data Structure:** Hash Table
-
-**Advantage:** O(1) category lookup vs O(n) linear search
-
-**Example:**
-```
-Input: "Fiction"
-Hash: hash("Fiction") = 3
-Output: All books in bucket[3]
-```
+**Process:** HashMap lookup → O(1) to find category bucket
 
 ---
 
 ### Module 2: Member Management
 
 #### 2.1 Register Member
-**Data Structure:** HashMap (Built-in Java)
+**Data Structure:** CustomHashMap
+
+**API Endpoint:** `POST /api/members`
+
+**Request Body:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "9876543210"
+}
+```
 
 **Process:**
-1. Accept: Name, Email, Phone
-2. Generate unique ID (auto-increment)
-3. Store in hash table → O(1)
-4. Return member ID
+1. Validate phone number (Indian format: 10 digits starting with 6-9)
+2. Check for duplicate email/phone → O(n) iteration
+3. Auto-generate member ID
+4. Store in HashMap → O(1)
+5. Set registration date to current date
 
 **Member Structure:**
 ```java
 class Member {
-    int memberId;
+    int id;
     String name, email, phone;
     LocalDate registrationDate;
     List<Integer> currentBorrowedBooks;
-    List<Integer> borrowingHistory;
     double pendingFines;
-    double totalFinesPaid;
 }
 ```
 
-#### 2.2 View Member Details
-**Lookup:** O(1) hash table access
+#### 2.2 Get All Members
+**API Endpoint:** `GET /api/members`
 
-**Displayed Information:**
-- Personal details
-- Currently borrowed books (with overdue status)
-- Borrowing history count
-- Fine information
+**Response:** List of all registered members
 
-#### 2.3 Borrowing History
-**Data Tracked:**
-- All books ever borrowed (ArrayList)
-- Currently holding books
-- Overdue notifications
+#### 2.3 Get Member Details
+**API Endpoint:** `GET /api/members/{id}/details`
 
-**Use Case:** Check member's borrowing patterns
+**Response:**
+```json
+{
+  "member": { /* member object */ },
+  "issuedBooks": [
+    {
+      "book": { /* book object */ },
+      "issueDate": "2026-01-15",
+      "dueDate": "2026-01-29",
+      "isOverdue": false
+    }
+  ],
+  "reservations": [ /* reservation objects */ ]
+}
+```
 
 ---
 
-### Module 3: Issue/Return System
+### Module 3: Circulation System
 
 #### 3.1 Issue Book
+**API Endpoint:** `POST /api/issue?bookId={id}&memberId={id}`
+
 **Multi-Step Process:**
 
 ```java
-1. Validate member ID → O(1)
-2. Check pending fines → warn if any
-3. Search book ID → O(log n)
-4. Check availability:
-   If available:
-     - Decrease available count
-     - Set issue date, due date (14 days)
-     - Add to member's borrowed list
-     - Push to undo stack
+1. Validate member ID → O(1) HashMap lookup
+2. Validate book ID → O(log n) AVL search
+3. Check if member already has this book
+4. Check book availability:
+   If availableCopies > 0:
+     - Decrease availableCopies
+     - Increment timesIssued
+     - Add to member's borrowedBooks list
+     - Create IssueRecord (issueDate=today, dueDate=today+14)
+     - Push action to stack
+     - Response: "Book issued. Due: YYYY-MM-DD"
    Else:
-     - Add to reservation queue
+     - Add to CircularQueue for this book
+     - Response: "Added to queue. Position: X"
 ```
 
 **Business Rules:**
 - 14-day loan period
-- Warning if member has pending fines
-- Auto-add to queue if unavailable
+- One member cannot borrow same book twice simultaneously
+- Auto-queue if unavailable
 
 #### 3.2 Return Book
+**API Endpoint:** `POST /api/return?bookId={id}&memberId={id}`
+
 **Process:**
 
 ```java
-1. Validate member & book
-2. Check if overdue:
-   If yes:
-     - Calculate fine (Rs. 5/day)
-     - Add to member's pending fines
-     - Insert into priority queue (heap)
+1. Validate member and book
+2. Check if member has this book
+3. Remove from member's borrowedBooks
+4. Mark IssueRecord as returned
+5. Check if overdue:
+   If dueDate < today:
+     - Calculate: daysOverdue = today - dueDate
+     - Calculate: fine = daysOverdue × ₹5
+     - Add fine to member.pendingFines
+     - Insert OverdueRecord into MinHeap
+6. Increase book.availableCopies
+7. Check reservation queue for this book:
+   If queue not empty:
+     - Dequeue next reservation
+     - Auto-issue book to that member
+     - Response: "Returned and auto-issued to Member X"
    Else:
-     - No fine
-3. Increase available count
-4. Remove from member's borrowed list
-5. Clear issue/due dates
+     - Response: "Book returned successfully"
 ```
 
 **Fine Calculation:**
-```java
+```
 daysOverdue = currentDate - dueDate
-fine = daysOverdue × 5.0 rupees
+fine = daysOverdue × ₹5.0
 ```
-
-#### 3.3 Renew Book
-**Constraints:**
-- Only if not overdue
-- Extends due date by 7 days
-
-**Use Case:** Member needs more time, book available
-
-#### 3.4 Reserve Book
-**Data Structure:** Queue (FIFO)
-
-**Process:**
-1. Check if book available
-2. If not, add member to reservation queue
-3. Notify when book returned
 
 ---
 
-### Module 4: Search System
+### Module 4: Overdue & Fines
 
-#### 4.1 Search by ID
-**Data Structure:** AVL Tree
+#### 4.1 Get Overdue Books
+**API Endpoint:** `GET /api/overdue`
 
-**Why AVL?** Guaranteed O(log n) performance
-
-**Process:**
-```java
-AVLNode node = avlTree.search(bookId);
-if (node != null) display(node.bookRef);
-```
-
-#### 4.2 Search by Category
-**Data Structure:** Hash Table
-
-**Advantage:** Direct bucket access in O(1)
-
-**Example:**
-```
-Search "Science" books:
-1. hash("Science") → bucket 7
-2. Return all books in bucket 7
-```
-
-#### 4.3 Title Autocomplete
-**Data Structure:** Trie
+**Data Structure:** MinHeap
 
 **Process:**
+1. Reset MinHeap
+2. Iterate all IssueRecords
+3. For each unreturned record where dueDate < today:
+   - Calculate daysOverdue and fine
+   - Create OverdueRecord object
+   - Insert into MinHeap (heap sorts by fine amount)
+4. Extract all from heap (sorted output)
+
+**OverdueRecord Structure:**
 ```java
-Input: "Har"
-1. Navigate trie: root → h → a → r
-2. Collect all words from "r" node
-3. Return: ["Harry Potter", "Hard Times", "Harvest Moon"]
-```
-
-**Time:** O(prefix length + results)
-
----
-
-### Module 5: Fine Management
-
-#### 5.1 View Overdue Books
-**Data Structure:** Priority Queue (Min-Heap)
-
-**Display:** Sorted by days overdue (most urgent first)
-
-**Heap Sort Application:**
-```java
-while (!heap.isEmpty()) {
-    OverdueBook book = heap.extractMin();
-    display(book);  // Sorted output
+class OverdueRecord implements Comparable<OverdueRecord> {
+    int bookId, memberId;
+    String memberName, bookTitle;
+    int daysOverdue;
+    double fine;
+    
+    // Compare by fine (descending) for min-heap
+    public int compareTo(OverdueRecord other) {
+        return Double.compare(other.fine, this.fine);
+    }
 }
 ```
 
-#### 5.2 Pay Fine
-**Process:**
-1. Get member's pending fine
-2. Accept payment amount
-3. Update: pendingFines -= payment
-4. Track: totalFinesPaid += payment
-
-#### 5.3 Fine Statistics
-**Metrics:**
-- Total overdue books
-- Total pending fines
-- Priority order (heap visualization)
+**Result:** List sorted by fine amount (highest first)
 
 ---
 
-### Module 6: Reports & Statistics
+### Module 5: Reservation Management
 
-#### 6.1 Overall Statistics
-**Data Aggregated:**
-- Total books (from linked list)
-- Total members (from hash map)
-- Books per category (from hash table)
-- Overdue count (from priority queue)
-- All data structures in use
+#### 5.1 Reserve Book
+**API Endpoint:** `POST /api/reserve?bookId={id}&memberId={id}`
 
-#### 6.2 Category Report
-**Source:** Hash table structure visualization
+**Process:**
+1. Check if book exists
+2. If book available → "Book available, please issue directly"
+3. Else → add to CircularQueue for this bookId
 
-**Shows:**
-- Books per category
-- Load factor
-- Collision statistics
+**Queue Management:**
+- Each book has its own CircularQueue (capacity: 20)
+- Stored in HashMap<BookId, CircularQueue<Reservation>>
 
-#### 6.3 Member Activity
-**Metrics:**
-- Active borrowers
-- Total fines collected
-- Average books per member
+#### 5.2 Get All Reservations
+**API Endpoint:** `GET /api/reservations`
+
+**Process:**
+1. Iterate all queues in HashMap
+2. Dequeue all items (store temporarily)
+3. Re-enqueue to preserve queue
+4. Return combined list
+
+#### 5.3 Get Reservations for Book
+**API Endpoint:** `GET /api/reservations/{bookId}`
+
+**Process:** Similar to above but for single book's queue
 
 ---
 
 ## System Architecture
 
-### Component Diagram
+### High-Level Architecture
 
 ```
-┌────────────────────────────────────────────────────┐
-│              RealisticLibraryApp (Main)            │
-│                   JFrame GUI                        │
-└────────────────────────────────────────────────────┘
-                      │
-        ┌─────────────┼──────────────┬──────────────┐
-        │             │              │              │
-   ┌────▼────┐  ┌────▼────┐    ┌───▼────┐   ┌─────▼─────┐
-   │  Book   │  │ Member  │    │ Fine   │   │  Issue    │
-   │ Manager │  │ Manager │    │Manager │   │  Return   │
-   └────┬────┘  └────┬────┘    └───┬────┘   └─────┬─────┘
-        │            │              │              │
-   ┌────▼────────────▼──────────────▼──────────────▼────┐
-   │           Data Structure Layer                      │
-   │  BST | AVL | Hash | Trie | Heap | Queue | Stack   │
-   └─────────────────────┬───────────────────────────────┘
-                        │
-                 ┌──────▼──────┐
-                 │   File I/O   │
-                 │ Persistence  │
-                 └──────────────┘
+┌─────────────────────────────────────────────────────┐
+│             Client Browser                          │
+│        (React SPA + Tailwind CSS)                   │
+└─────────────────────────────────────────────────────┘
+                       │ HTTP/REST
+                       ├─ GET /api/books
+                       ├─ POST /api/books
+                       ├─ POST /api/issue
+                       └─ ... other endpoints
+                       ▼
+┌─────────────────────────────────────────────────────┐
+│          Spring Boot Application                    │
+│          (Port 8080 or $PORT)                       │
+├─────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────┐   │
+│  │  LibraryController (@RestController)        │   │
+│  │  - @PostMapping, @GetMapping endpoints      │   │
+│  └─────────────────────────────────────────────┘   │
+│                     │                               │
+│  ┌─────────────────────────────────────────────┐   │
+│  │  LibraryService (@Service)                  │   │
+│  │  - Business logic                           │   │
+│  │  - Data structure orchestration             │   │
+│  └─────────────────────────────────────────────┘   │
+│                     │                               │
+│  ┌─────────────────────────────────────────────┐   │
+│  │  Custom Data Structures Layer               │   │
+│  │  CustomLinkedList | AVL | Trie | MinHeap   │   │
+│  │  CustomHashMap | CircularQueue | Stack     │   │
+│  └─────────────────────────────────────────────┘   │
+│                     │                               │
+│  ┌─────────────────────────────────────────────┐   │
+│  │  Model Layer                                │   │
+│  │  Book | Member | IssueRecord | etc.        │   │
+│  └─────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────┘
 ```
 
-### Class Relationships
+### Backend Directory Structure
 
-```java
-// Core Classes
-Book.java                   // Data model
-Member.java                 // Data model
+```
+backend/
+├── src/
+│   └── main/
+│       └── java/com/library/
+│           ├── controller/
+│           │   └── LibraryController.java  (REST endpoints)
+│           ├── service/
+│           │   └── LibraryService.java     (Business logic)
+│           ├── model/
+│           │   ├── Book.java
+│           │   ├── Member.java
+│           │   ├── IssueRecord.java
+│           │   ├── OverdueRecord.java
+│           │   └── Reservation.java
+│           ├── ds/  (Custom Data Structures)
+│           │   ├── AVLTree.java
+│           │   ├── BinarySearchTree.java
+│           │   ├── CircularQueue.java
+│           │   ├── CustomHashMap.java
+│           │   ├── CustomLinkedList.java
+│           │   ├── CustomStack.java
+│           │   ├── MinHeap.java
+│           │   └── Trie.java
+│           ├── config/
+│           │   └── CorsConfig.java  (CORS configuration)
+│           └── LibraryApplication.java  (Main @SpringBootApplication)
+└── pom.xml  (Maven dependencies)
+```
 
-// Data Structure Classes
-BookLinkedList.java         // Singly linked list
-BookBST.java               // Binary search tree
-BookAVL.java               // AVL tree
-BookHashTable.java         // Hash table
-BookTrie.java              // Trie
-FineManager.java           // Priority queue (heap)
-IssueQueue.java            // Circular queue
-UndoStack.java             // Stack
+### Frontend Directory Structure
 
-// Manager Classes
-MemberManager.java         // Member operations
-DataPersistence.java       // File I/O
+```
+frontend/
+├── src/
+│   ├── components/
+│   │   └── Sidebar.jsx  (Navigation sidebar)
+│   ├── pages/
+│   │   ├── Dashboard.jsx      (Home - statistics)
+│   │   ├── Books.jsx          (Book management)
+│   │   ├── Members.jsx        (Member management)
+│   │   ├── Circulation.jsx    (Issue/Return)
+│   │   ├── Overdue.jsx        (Fine management)
+│   │   ├── Reservations.jsx   (Queue management)
+│   │   ├── SearchPage.jsx     (Advanced search)
+│   │   └── Analytics.jsx      (Reports & charts)
+│   ├── services/
+│   │   └── api.js  (Axios HTTP client)
+│   ├── App.jsx     (Router setup)
+│   └── main.jsx    (React entry point)
+├── public/
+├── index.html
+├── package.json
+├── vite.config.js
+└── tailwind.config.js
+```
 
-// Main Application
-RealisticLibraryApp.java   // GUI + orchestration
+### Data Flow: Issue Book Example
+
+```
+User clicks "Issue Book" button
+    ↓
+React Component (Circulation.jsx)
+    ↓
+api.issueBook(bookId, memberId) via Axios
+    ↓
+POST /api/issue?bookId=101&memberId=1
+    ↓
+LibraryController.issueBook()
+    ↓
+LibraryService.issueBook()
+    ├─ members.get(memberId)           → O(1) HashMap
+    ├─ bookIndex.search(bookId)        → O(log n) AVL
+    ├─ Check availableCopies > 0
+    ├─ If yes:
+    │   ├─ Update book/member
+    │   ├─ Create IssueRecord
+    │   └─ Push to stack
+    └─ If no:
+        └─ queue.enqueue(reservation)  → O(1) CircularQueue
+    ↓
+Return success message
+    ↓
+React component updates UI
 ```
 
 ---
 
-## Implementation Details
+## API Documentation
 
-### File Structure
+### Base URL
 
-```
-DSA LAB EL/
-├── Book.java                    (82 lines)
-├── Member.java                  (68 lines)
-├── BookLinkedList.java          (135 lines)
-├── BookBST.java                 (84 lines)
-├── BookAVL.java                 (320 lines)
-├── BookHashTable.java           (152 lines)
-├── BookTrie.java                (280 lines)
-├── FineManager.java             (240 lines)
-├── IssueQueue.java              (41 lines)
-├── UndoStack.java               (32 lines)
-├── MemberManager.java           (162 lines)
-├── DataPersistence.java         (135 lines)
-├── RealisticLibraryApp.java     (938 lines)
-├── library_books.txt            (Auto-generated)
-└── library_members.txt          (Auto-generated)
+**Local Development:** `http://localhost:8080/api`  
+**Production:** `https://your-app.onrender.com/api`
 
-Total: ~2,700 lines of code
-```
+### Book Endpoints
 
-### Data Flow Example: Issuing a Book
+| Method | Endpoint | Description | Request Body | Response |
+|--------|----------|-------------|--------------|----------|
+| POST | `/books` | Add new book | Book object | Book with ID |
+| GET | `/books` | Get all books | - | Book array |
+| GET | `/books/{id}` | Get book by ID | - | Book object |
+| GET | `/books/search?q={query}` | Search books | - | Book array |
+| GET | `/books/category/{category}` | Filter by category | - | Book array |
 
-```
-User Input
-    ↓
-GUI Layer (JButton clicked)
-    ↓
-issueBook() method
-    ↓
-1. memberManager.getMember(id) → O(1) Hash lookup
-    ↓
-2. avlTree.search(bookId) → O(log n) AVL search
-    ↓
-3. Check book.availableCopies > 0
-    ↓
-4a. If YES:                     4b. If NO:
-    - book.availableCopies--        - queue.enqueue(bookId)
-    - Set issue/due dates           - Notify user
-    - member.borrowBook(id)
-    - undoStack.push(id)
-    ↓
-5. DataPersistence.saveAll() (on app close)
-    ↓
-Files: library_books.txt, library_members.txt
-```
+### Member Endpoints
 
----
+| Method | Endpoint | Description | Request Body | Response |
+|--------|----------|-------------|--------------|----------|
+| POST | `/members` | Register member | Member object | Member with ID |
+| GET | `/members` | Get all members | - | Member array |
+| GET | `/members/{id}` | Get member | - | Member object |
+| GET | `/members/{id}/details` | Get detailed info | - | Extended info |
 
-## Data Persistence
+### Circulation Endpoints
 
-### Why Needed?
+| Method | Endpoint | Description | Parameters | Response |
+|--------|----------|-------------|------------|----------|
+| POST | `/issue` | Issue book | bookId, memberId | Success message |
+| POST | `/return` | Return book | bookId, memberId | Success message |
+| GET | `/overdue` | Get overdue books | - | OverdueRecord array |
+| POST | `/reserve` | Reserve book | bookId, memberId | Success message |
+| GET | `/reservations` | All reservations | - | Reservation array |
+| GET | `/reservations/{bookId}` | Book's queue | - | Reservation array |
 
-Without persistence, all data lost when application closes. Library needs permanent records!
+### CORS Configuration
 
-### Technology: File I/O
+**File:** `CorsConfig.java`
 
-**Approach:** Simple text file storage using BufferedReader/Writer
-
-**Advantages:**
-- Easy to implement
-- Easy to explain
-- Human-readable format
-- No external database needed
-- Portable across systems
-
-### File Format
-
-#### library_books.txt
-```
-101|Harry Potter|J.K. Rowling|Fiction|5|3|124
-102|Introduction to Algorithms|Cormen|Technology|3|2|45
-```
-Format: `ID|Title|Author|Category|TotalCopies|Available|IssueCount`
-
-#### library_members.txt
-```
-1001|John Doe|john@email.com|9876543210|2026-01-15|101,105|25.50|150.00
-```
-Format: `ID|Name|Email|Phone|RegDate|BorrowedBooks|PendingFines|TotalPaid`
-
-### Implementation
-
-**Save on Close:**
 ```java
-addWindowListener(new WindowAdapter() {
-    public void windowClosing(WindowEvent e) {
-        DataPersistence.saveAll(bookList, memberManager);
-        System.exit(0);
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedOrigins(
+                    "http://localhost:5173",
+                    "https://your-frontend.vercel.app"
+                )
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*");
     }
-});
-```
-
-**Load on Start:**
-```java
-public RealisticLibraryApp() {
-    // ... GUI setup ...
-    DataPersistence.loadAll(bookList, bookBST, avlTree, 
-                           categoryIndex, titleSearch, memberManager);
 }
-```
-
-**Key Methods:**
-
-```java
-// Saving books
-BufferedWriter writer = new BufferedWriter(new FileWriter("library_books.txt"));
-String data = bookList.getAllBooksData(); // Returns pipe-separated data
-writer.write(data);
-
-// Loading books
-BufferedReader reader = new BufferedReader(new FileReader("library_books.txt"));
-String line = reader.readLine();
-String[] parts = line.split("\\|");
-// Parse and create Book objects
 ```
 
 ---
@@ -921,33 +931,48 @@ String[] parts = line.split("\\|");
 
 ### Operations Comparison
 
-| Operation | Naive Approach | Our Implementation | Improvement |
-|-----------|---------------|-------------------|-------------|
-| Find member | O(n) linear search | O(1) hash table | n× faster |
-| Search book | O(n) linear search | O(log n) AVL | Much faster |
-| Category search | O(n) scan all | O(1) hash bucket | n× faster |
-| Get min overdue | O(n) scan + sort | O(1) heap peek | n× faster |
-| Autocomplete | O(n × m) compare all | O(p + k) trie | Very efficient |
-| Reserve book | O(1) array/list | O(1) queue | Same, but organized |
+| Operation | Without DS Optimization | With Our Implementation | Complexity Improvement |
+|-----------|------------------------|------------------------|----------------------|
+| Find member | O(n) linear scan | O(1) CustomHashMap | **n× faster** |
+| Search book by ID | O(n) linear scan | O(log n) AVL Tree | **Much faster** |
+| Category filter | O(n) scan all books | O(1) hash bucket | **n× faster** |
+| Get highest fine | O(n) + O(n log n) sort | O(1) MinHeap peek | **Very efficient** |
+| Title autocomplete | O(n × m) compare all | O(p + k) Trie | **Extremely efficient** |
+| Reserve book | O(1) list append | O(1) CircularQueue | **Same, better organized** |
 
-**Overall System Complexity:**
+### Individual Operations
 
-- Book Issue: O(1) member lookup + O(log n) book search = **O(log n)**
-- Book Return: O(1) + O(log n) + O(log n) heap insert = **O(log n)**
-- Category Search: **O(1)** average case
-- Autocomplete: **O(p + k)** where p = prefix, k = results
+**Book Management:**
+- Add book: O(1) LinkedList + O(log n) AVL + O(m) Trie + O(1) HashMap = **O(log n + m)**
+- Search by ID: **O(log n)** (AVL Tree)
+- Search by title: **O(p + k)** where p = prefix length, k = results (Trie)
+- Get by category: **O(1)** (HashMap lookup)
+
+**Member Management:**
+- Register: **O(1)** (HashMap insert)
+- Lookup: **O(1)** (HashMap get)
+- Get all: **O(n)** (iterate values)
+
+**Circulation:**
+- Issue book: O(1) + O(log n) = **O(log n)**
+- Return book: O(1) + O(log n) + O(log n) heap = **O(log n)**
+- Reserve: **O(1)** (CircularQueue enqueue)
+
+**Fine Management:**
+- Get overdue: O(k log k) where k = overdue count = **O(k log k)**
+- Sorted by priority: Automatic via MinHeap
 
 ### Space Complexity
 
 | Data Structure | Space | Justification |
 |---------------|-------|---------------|
-| Linked List | O(n) | n books |
-| BST/AVL | O(n) | n book references |
-| Hash Table | O(n + m) | n books + m categories |
-| Trie | O(ALPHABET_SIZE × n × m) | Worst case, typically much less |
-| Priority Queue | O(k) | k overdue books |
-| Stack | O(s) | s undo operations |
-| Queue | O(r) | r reservations |
+| CustomLinkedList | O(n) | n books + k issue records |
+| AVL Tree | O(n) | n book references |
+| CustomHashMap | O(n + m) | n members + m categories |
+| Trie | O(ALPHABET × n × m) | Worst case, typically less |
+| MinHeap | O(k) | k overdue books |
+| CircularQueue | O(r × b) | r reservations × b books |
+| CustomStack | O(s) | s operations logged |
 
 **Total:** O(n) where n = number of books (dominant factor)
 
@@ -957,158 +982,211 @@ String[] parts = line.split("\\|");
 
 ### Unit-I: Stacks, Queues, Recursion
 
-✅ **Stack** - `UndoStack.java`
-- Implementation: Array-based stack
-- Application: Undo book issue operation
+✅ **Stack** - `CustomStack.java`
+- Implementation: Generic array-based stack
+- Application: Operation logging/tracking
 - Operations: push(), pop(), isEmpty(), isFull()
+- Time: O(1) for all operations
 
-✅ **Queue** - `IssueQueue.java`
-- Implementation: Circular queue
-- Application: Book reservation waiting list
+✅ **Queue** - `CircularQueue.java`
+- Implementation: Circular array queue
+- Application: Book reservation FIFO system
 - Operations: enqueue(), dequeue(), isEmpty(), isFull()
+- Time: O(1) for all operations
+- **Circular advantage:** Optimal space usage, no shifting needed
 
-✅ **Recursion** - Various recursive methods
-- Used in BST/AVL traversals
-- Tree operations (insert, search, delete)
-- Demonstrates stack role during recursion
+✅ **Recursion** - Used throughout
+- Tree traversals (AVL in-order)
+- Demonstrates call stack mechanism
 
-❌ **Infix/Postfix** - Not included (not needed for library)
+---
 
-### Unit-II: Linked Lists, Dynamic Memory
+### Unit-II: Linked Lists
 
-✅ **Singly Linked List** - `BookLinkedList.java`
-- Operations: insert, delete, search, display
-- Application: Primary book storage
-- Dynamic memory management (Java automatic)
+✅ **Singly Linked List** - `CustomLinkedList.java`
+- Generic implementation: `CustomLinkedList<T>`
+- Operations: add(), remove(), search(), toList()
+- Application: Primary book storage, issue records
+- Dynamic memory allocation
 
-✅ **Dynamic Memory** - Automatic in Java
-- malloc/calloc equivalent: `new`  
-- free equivalent: Garbage collection
+✅ **Dynamic Memory** - Java automatic
+- Object creation: `new` operator
+- Garbage collection: automatic cleanup
 
-### Unit-III: Advanced Lists, Trees
+---
 
-✅ **Binary Search Tree** - `BookBST.java`
-- Operations: insert, delete, search
-- Traversals: inorder, preorder, postorder
-- Application: Book indexing
+### Unit-III: Trees
 
-✅ **Doubly Linked List** - Implemented in `Book.java`
-- Book class has `prev` pointer for potential DLL usage
-- Can be used for browsing history (navigation)
+✅ **Binary Search Tree** - `BinarySearchTree.java`
+- Operations: insert, search, traversal
+- Application: Book indexing (educational comparison)
+- Demonstrates BST advantages/limitations
 
-✅ **Circular Linked List** - Can be demonstrated with queue wrap-around
+✅ **AVL Tree** - `AVLTree.java` ⭐
+- Self-balancing BST
+- All 4 rotation cases implemented:
+  - Left-Left (LL) → Right Rotation
+  - Right-Right (RR) → Left Rotation
+  - Left-Right (LR) → Left then Right
+  - Right-Left (RL) → Right then Left
+- Balance factor tracking: height(left) - height(right)
+- **Guaranteed O(log n)** for all operations
+- Application: Primary book search index
 
-### Unit-IV: Heaps, Heap Sort
+---
 
-✅ **Heap** - `FineManager.java`
-- Implementation: Min-heap (array-based)
-- Operations: insert O(log n), extractMin O(log n)
-- Heapify up, heapify down implemented
+### Unit-IV: Heaps & Priority Queues
 
-✅ **Heap Sort** - Demonstrated in `displaySortedOverdue()`
+✅ **Min-Heap** - `MinHeap.java`
+- Generic implementation: `MinHeap<T extends Comparable<T>>`
+- Array-based representation
+- Operations: insert(), extractMin(), heapifyUp(), heapifyDown()
+- Time: O(log n) for insert/extract, O(1) for peek
+- Application: Priority queue for fine management
+
+✅ **Heap Sort** - Demonstrated in getOverdueBooks()
 - Extract all elements from heap in sorted order
 - Time complexity: O(n log n)
 
-✅ **Priority Queue** - FineManager application
-- Overdue books automatically sorted by urgency
+✅ **Priority Queue** - Overdue book prioritization
+- Automatically maintains sorted order by fine amount
+- No manual sorting required
 
-### Unit-V: Advanced Trees, Graphs, Hashing
+---
 
-✅ **AVL Tree** - `BookAVL.java`
-- Self-balancing with rotations
-- All 4 rotation cases implemented
-- Balance factor tracking
+### Unit-V: Advanced Trees & Hashing
 
-✅ **Hashing** - Multiple implementations
-- MemberManager: Java HashMap
-- BookHashTable: Custom hash table with chaining
-- Hash function: Division method
-- Collision resolution: Separate chaining
+✅ **Trie** - `Trie.java`
+- Prefix tree for string search
+- Node structure: Map<Character, TrieNode>
+- Operations: insert(O(m)), searchPrefix(O(p + k))
+- Application: Book title autocomplete
+- **Huge advantage** over naive string matching
 
-✅ **Trie** - `BookTrie.java`
-- Prefix-based title search
-- Autocomplete functionality
-- Node structure with character children
+✅ **Hashing** - `CustomHashMap.java`
+- Generic hash table: `CustomHashMap<K, V>`
+- Hash function: `key.hashCode() % capacity`
+- Collision resolution: **Separate chaining** (linked list per bucket)
+- Dynamic resizing: Load factor = 0.75
+- Applications:
+  - Member storage (O(1) lookup)
+  - Category indexing (O(1) filter)
+  - Reservation queues per book
 
-❌ **Graph** - Excluded (not essential for basic library)
-❌ **B+ Tree** - Beyond scope
-❌ **Splay Tree** - Beyond scope
+**Coverage: 10/10 essential topics = 100%** ✅
 
-**Coverage: 10/13 major topics = 77%** (All essential topics covered)
+Topics not implemented (not required for library system):
+- ❌ Graph algorithms (not applicable)
+- ❌ B+ Trees (beyond scope)
+- ❌ Red-Black Trees (AVL sufficient)
 
 ---
 
 ## User Interface
 
-### GUI Technology: Java Swing
+### Technology: React 18 + Tailwind CSS
 
-**Components Used:**
-- `JFrame` - Main application window
-- `JTabbedPane` - Tabbed interface (6 tabs)
-- `JPanel` - Container panels
-- `JButton` - Action buttons
-- `JOptionPane` - Input/output dialogs
-- `JTextArea` + `JScrollPane` - Scrollable text display
-- `GridLayout` - Button grid layout
+**Routing:** React Router DOM with 8 pages  
+**State Management:** React hooks (useState, useEffect)  
+**HTTP Client:** Axios  
+**Animations:** Framer Motion  
+**Icons:** Lucide React  
 
-### Tab Organization
+### Page Organization
 
-**📚 Books Tab:**
-- Add Book
-- Update Book
-- Delete Book
-- Display All
-- View by Category
-- Undo
-- Load Samples
+**🏠 Dashboard** (`/`)
+- Real-time statistics cards
+- Total books, members, issued books
+- Quick action buttons
+- Recent activity feed
 
-**👥 Members Tab:**
-- Register Member
-- View Member
-- Display All
-- Borrowing History
-- Statistics
+**📚 Books** (`/books`)
+- Add new book form
+- Book list with card display
+- Search and filter options
+- Edit/delete functionality (future)
 
-**📤 Issue/Return Tab:**
-- Issue Book
-- Return Book
-- Renew Book
-- Reserve Book
-- View Reservations
+**👥 Members** (`/members`)
+- Member registration form
+- Member directory
+- Detailed member view with borrowed books
+- Pending fines display
 
-**🔍 Search Tab:**
-- Search by ID
-- Search by Title
-- Search by Author
-- Search by Category
-- Autocomplete
-- Advanced Search
+**🔄 Circulation** (`/circulation`)
+- Issue book interface
+- Return book interface
+- Active loans display
+- Reservation creation
 
-**💰 Fines Tab:**
-- View Overdue
-- Pay Fine
-- Fine History
-- Statistics
+**⏰ Overdue** (`/overdue`)
+- Overdue books table (sorted by fine)
+- Days overdue calculation
+- Fine amount display
+- Member contact information
 
-**📊 Reports Tab:**
-- Most Borrowed
-- Overall Stats
-- Category Report
-- Member Activity
-- Availability
+**📋 Reservations** (`/reservations`)
+- All reservations list
+- Filter by book
+- Queue position display
+- Auto-issue notification
 
-### Design Patterns
+**🔍 Search** (`/search`)
+- Multi-criteria search
+- ID search (AVL)
+- Title search (Trie autocomplete)
+- Category filter (HashMap)
+- Real-time results
 
-**MVC-inspired:**
-- Model: Book, Member classes
-- View: Swing GUI components
-- Controller: RealisticLibraryApp methods
+**📊 Analytics** (`/analytics`)
+- Charts and graphs
+- Most issued books
+- Category distribution
+- Member activity stats
 
-**Separation of Concerns:**
-- Data structures in separate files
-- Business logic in manager classes
-- Persistence layer isolated
-- GUI in main app class
+### Design Features
+
+**Modern UI:**
+- Clean, minimalist design
+- Gradient backgrounds
+- Card-based layouts
+- Responsive grid systems
+
+**Tailwind CSS Classes:**
+```jsx
+<div className="bg-gradient-to-br from-blue-500 to-purple-600 
+                rounded-lg shadow-lg p-6 transform hover:scale-105 
+                transition-all duration-200">
+```
+
+**Framer Motion Animations:**
+```jsx
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+```
+
+**Color Scheme:**
+- Primary: Blue (#3B82F6)
+- Secondary: Purple (#8B5CF6)
+- Success: Green (#10B981)
+- Warning: Yellow (#F59E0B)
+- Error: Red (#EF4444)
+
+### Component Structure
+
+**Sidebar.jsx:**
+- Fixed left navigation (64 width)
+- React Router NavLink components
+- Active link highlighting
+- Icons from Lucide React
+
+**Page Components:**
+- Consistent header structure
+- Action buttons (top-right)
+- Content area with cards/tables
+- Form modals (future enhancement)
 
 ---
 
@@ -1116,46 +1194,179 @@ String[] parts = line.split("\\|");
 
 ### Prerequisites
 
+**Backend:**
 ```bash
 # Check Java installation
 java -version
-# Should show: java version "1.8.0" or higher
+# Should show: openjdk version "17" or higher
 
-javac -version  
-# Should show: javac 1.8.0 or higher
+# Maven (optional, wrapper included)
+mvn -version
 ```
 
-### Installation Steps
-
-1. **Download/Clone Project**
+**Frontend:**
 ```bash
-cd "path/to/DSA LAB EL"
+# Check Node.js
+node -v
+# Should show: v16 or higher
+
+# npm
+npm -v
 ```
 
-2. **Compile All Files**
+### Local Development Setup
+
+#### 1. Clone Repository
+
 ```bash
-javac *.java
+cd c:\Users\mohit\OneDrive\Desktop
+git clone <repository-url> lib_mgmt_sys
+cd lib_mgmt_sys
 ```
 
-3. **Run Application**
+#### 2. Backend Setup
+
 ```bash
-java RealisticLibraryApp
+cd backend
+
+# Option 1: Using Maven Wrapper (recommended)
+./mvnw clean install
+./mvnw spring-boot:run
+
+# Option 2: Using installed Maven
+mvn clean install
+mvn spring-boot:run
+
+# Backend starts on http://localhost:8080
 ```
 
-### First-Time Setup
+**Verify Backend:**
+```bash
+curl http://localhost:8080/api/books
+# Should return JSON array (sample books)
+```
 
-On first run:
-1. Application loads (no saved data)
-2. Click "Load Sample Books" to add demo data
-3 books + 2 members added automatically
-4. Start using the system
-5. Data auto-saves when you close
+#### 3. Frontend Setup
 
-### File Generated
+```bash
+cd ../frontend
 
-After first use:
-- `library_books.txt` - Persistent book data
-- `library_members.txt` - Persistent member data
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Frontend starts on http://localhost:5173
+```
+
+**Verify Frontend:**
+- Open browser: http://localhost:5173
+- Should see LibMaster dashboard
+
+### Environment Variables
+
+**Frontend** (`.env.local`):
+```
+VITE_API_URL=http://localhost:8080/api
+```
+
+**Production:**
+```
+VITE_API_URL=https://your-backend.onrender.com/api
+```
+
+### Build for Production
+
+**Backend:**
+```bash
+cd backend
+./mvnw clean package -DskipTests
+# Creates: target/backend-0.0.1-SNAPSHOT.jar
+```
+
+**Frontend:**
+```bash
+cd frontend
+npm run build
+# Creates: dist/ folder with optimized files
+```
+
+---
+
+## Deployment
+
+### Backend Deployment (Render)
+
+**Platform:** [Render](https://render.com)  
+**Type:** Web Service  
+
+**Steps:**
+
+1. **Create New Web Service**
+   - Connect GitHub repository
+   - Select `backend` directory
+
+2. **Build Configuration**
+   - **Build Command:** `./mvnw clean package -DskipTests`
+   - **Start Command:** `java -Dserver.port=$PORT -jar target/backend-0.0.1-SNAPSHOT.jar`
+   - **Environment:** Java 17
+
+3. **Environment Variables**
+   - `PORT`: Auto-set by Render
+   - `JAVA_TOOL_OPTIONS`: `-Xmx512m` (optional, limit memory)
+
+4. **Deploy**
+   - Auto-deploys on git push
+   - URL: `https://your-app.onrender.com`
+
+**Health Check Endpoint:** `/api/books`
+
+---
+
+### Frontend Deployment (Vercel)
+
+**Platform:** [Vercel](https://vercel.com)  
+**Type:** Static Site  
+
+**Steps:**
+
+1. **Install Vercel CLI**
+```bash
+npm i -g vercel
+```
+
+2. **Deploy**
+```bash
+cd frontend
+vercel --prod
+```
+
+3. **Configure Environment**
+   - Dashboard → Settings → Environment Variables
+   - Add `VITE_API_URL` = `https://your-backend.onrender.com/api`
+
+4. **Redeploy**
+```bash
+vercel --prod
+```
+
+**Production URL:** `https://your-app.vercel.app`
+
+---
+
+### CORS Configuration
+
+Update `backend/src/main/java/com/library/config/CorsConfig.java`:
+
+```java
+.allowedOrigins(
+    "http://localhost:5173",
+    "https://your-frontend.vercel.app"
+)
+```
+
+Redeploy backend after updating.
 
 ---
 
@@ -1163,124 +1374,202 @@ After first use:
 
 ### Test Scenarios
 
-#### Scenario 1: Book Management
+#### Scenario 1: Complete Book Lifecycle
+
 ```
 1. Add Book
-   Input: ID=201, Title="Test Book", Author="Test Author", 
-          Category="Fiction", Copies=5
-   Expected: ✅ Book added to all structures
-   
-2. Search Book (AVL)
-   Input: ID=201
-   Expected: Book details displayed
-   
-3. View Category
-   Input: "Fiction"
-   Expected: Test Book appears in list
-   
-4. Delete Book
-   Input: ID=201
-   Expected: Book removed from all structures
+   POST /api/books
+   Body: {"title": "Test Book", "author": "Test Author", 
+          "category": "Fiction", "totalCopies": 3}
+   Expected: ✅ Book added with ID 101+ 
+   Verification: Check AVL (GET /api/books/101), 
+                 Trie (search "Test"), 
+                 Category (GET /api/books/category/Fiction)
+
+2. Search Book
+   GET /api/books/search?q=Test
+   Expected: ✅ Book appears in results (Trie search)
+
+3. Search by ID
+   GET /api/books/101
+   Expected: ✅ Book details (AVL search, O(log n))
+
+4. Get by Category
+   GET /api/books/category/Fiction
+   Expected: ✅ Test Book in list (HashMap, O(1))
 ```
 
-#### Scenario 2: Issue/Return Flow
+#### Scenario 2: Issue/Return with Overdue
+
 ```
 1. Register Member
-   Expected: Member ID 1001 created
-   
+   POST /api/members
+   Body: {"name": "John", "email": "john@test.com", "phone": "9876543210"}
+   Expected: ✅ Member created with ID
+
 2. Issue Book
-   Input: Member=1001, Book=101
-   Expected: Available count decreased, due date set
-   
+   POST /api/issue?bookId=101&memberId=1
+   Expected: ✅ "Book issued. Due: [date+14 days]"
+   Verification: book.availableCopies decreased
+                member.currentBorrowedBooks includes 101
+
 3. Check Member Details
-   Expected: Shows 1 borrowed book
-   
-4. Return Book (Before Due)
-   Expected: No fine, available count increased
-   
-5. Issue Again
-  
-6. Return Book (After Due - simulate)
-   Expected: Fine calculated, added to member pending
+   GET /api/members/1/details
+   Expected: ✅ Shows 1 issued book with due date
+
+4. Return Book (simulate after due date)
+   POST /api/return?bookId=101&memberId=1
+   Expected: ✅ "Book returned successfully"
+   If overdue: Fine calculated (days × ₹5)
+
+5. Check Overdue
+   GET /api/overdue
+   Expected: ✅ List sorted by fine amount (MinHeap)
 ```
 
-#### Scenario 3: Reservation System
+#### Scenario 3: Reservation Queue
+
 ```
-1. Issue all copies of a book
-2. Try to issue same book again
-   Expected: "Add to reservation queue?" prompt
-3. Accept reservation
-   Expected: Added to queue
-4. Return one copy
-   Expected: Notification for first in queue
+1. Issue all copies of book ID 102 (assume 2 copies)
+   Issue to member 1: ✅
+   Issue to member 2: ✅
+   book.availableCopies = 0
+
+2. Try to issue again (member 3)
+   POST /api/issue?bookId=102&memberId=3
+   Expected: ✅ "Added to queue. Position: 1"
+   Verification: CircularQueue has 1 item
+
+3. Another member reserves
+   POST /api/reserve?bookId=102&memberId=4
+   Expected: ✅ "Queue position: 2"
+
+4. Member 1 returns book
+   POST /api/return?bookId=102&memberId=1
+   Expected: ✅ "Returned and auto-issued to Member 3"
+   Verification: Member 3 now has book, queue size = 1
+
+5. Check remaining reservations
+   GET /api/reservations/102
+   Expected: ✅ Only Member 4 in queue
 ```
 
-#### Scenario 4: Data Persistence
+#### Scenario 4: Data Structure Performance
+
+**AVL Balance Verification:**
 ```
-1. Add 3 books, Register 2 members
-2. Close application
-   Expected: Data saved to files
-3. Restart application
-   Expected: All 3 books and 2 members loaded
+Add books with sequential IDs: 101, 102, 103... 110
+Manually verify AVL tree remains balanced (height ≤ log₂(n) + 1)
+Without AVL: BST would degenerate to linked list (height = 10)
+With AVL: Height should be ~4
 ```
 
-#### Scenario 5: Time Complexity Validation
+**HashMap Performance:**
 ```
-Measure search times:
-- 100 books: BST ~7 comparisons, AVL ~7, Hash ~1
-- 1000 books: BST ~10, AVL ~10, Hash ~1
-- 10000 books: BST ~13, AVL ~13, Hash ~1
+Add 1000 members
+Time member lookup: Should be O(1) regardless of member ID
+Compare: Linear search would require avg 500 iterations
+HashMap: 1-2 iterations (depending on collisions)
+```
 
-Validates: O(log n) for trees, O(1) for hash
+**Trie Autocomplete:**
+```
+Add 100 books
+Search "Ha" → Returns all titles starting with "Ha"
+Time: O(2 + k) where k = results
+Compare to naive: O(100 × title_length)
 ```
 
 ### Edge Cases Handled
 
-✅ Empty inputs  
-✅ Duplicate book IDs  
-✅ Delete book with issued copies  
-✅ Issue to non-existent member  
-✅ Return book not borrowed by member  
-✅ Renew overdue book  
-✅ Undo when stack empty  
-✅ Full queue/stack handling  
+✅ **Empty inputs:** Validation in controller  
+✅ **Duplicate emails/phones:** Check before registration  
+✅ **Invalid phone format:** Regex validation `^[6-9]\d{9}$`  
+✅ **Issue same book twice:** Check currentBorrowedBooks  
+✅ **Return book not borrowed:** Validation check  
+✅ **Queue full:** CircularQueue capacity check (20)  
+✅ **Non-existent IDs:** Null checks, error messages  
 
 ---
 
 ## Future Enhancements
 
-### Phase 1: Enhanced Search
-- Author hash index (O(1) author search)
-- ISBN support with dedicated index
-- Full-text search across all fields
-- Advanced filters (year, publisher, edition)
+### Phase 1: Enhanced Features
 
-### Phase 2: Reporting
-- PDF report generation
-- Borrowing trend analysis
-- Popular books analytics
-- Member activity heatmaps
-- Fine collection reports
+**Authentication & Authorization:**
+- JWT-based login system
+- User roles: Admin, Librarian, Member
+- Protected routes
+- Session management
 
-### Phase 3: Network Features
-- Client-server architecture
-- Multiple librarian stations
-- Remote book reservation
+**Database Integration:**
+- Replace in-memory structures with persistent storage
+- Options: PostgreSQL, MongoDB
+- Spring Data JPA integration
+- Maintain custom DS for indexing/caching
+
+**Advanced Search:**
+- Full-text search (Elasticsearch)
+- Multi-field filters
+- Fuzzy matching
+- Search history
+
+### Phase 2: UI/UX Improvements
+
+**Design:**
+- Dark mode toggle
+- Mobile-responsive design
+- Progressive Web App (PWA)
+- Offline support
+
+**Features:**
+- Real-time notifications (WebSocket)
 - Email notifications for due dates
-- SMS alerts for overdue books
+- SMS alerts for overdue
+- Export reports (PDF, Excel)
+- Print library card
 
-### Phase 4: Advanced DS
-- B+ tree for on-disk indexing
-- Splay tree for frequently accessed books
-- Graph for book recommendations ("users who borrowed X also borrowed Y")
-- Suffix tree for advanced text search
+### Phase 3: Analytics & Reporting
+
+**Dashboards:**
+- Interactive charts (Chart.js, Recharts)
+- Borrowing trends over time
+- Popular books/categories
+- Member activity heatmap
+- Revenue from fines
+
+**AI/ML:**
+- Book recommendation system
+- Demand forecasting
+- Auto-categorization using NLP
+
+### Phase 4: Advanced Data Structures
+
+**Additional DS:**
+- B+ Tree for disk-based indexing
+- Bloom Filter for existence checks
+- Skip List for alternative to AVL
+- Graph for "users who borrowed X also borrowed Y" recommendations
+
+**Optimization:**
+- Caching layer (Redis)
+- Database query optimization
+- Lazy loading
+- Pagination for large datasets
 
 ### Phase 5: Modern Features
-- Barcode/QR code scanning
-- RFID integration
-- Cloud backup system
-- Mobile app interface
-- Digital library (e-books)
+
+**Hardware Integration:**
+- Barcode scanner support
+- QR code generation for books
+- RFID tag reading
+- Self-checkout kiosks
+
+**Digital Library:**
+- E-book support
+- PDF viewer integration
+- DRM management
+- Reading progress tracking
 
 ---
 
@@ -1288,104 +1577,252 @@ Validates: O(log n) for trees, O(1) for hash
 
 ### Project Achievements
 
-✅ **Comprehensive Implementation:** 8 core data structures in practical context  
-✅ **Real-World Application:** Actual library management features  
-✅ **Efficient Performance:** O(1) and O(log n) operations throughout  
-✅ **Data Persistence:** File-based storage for permanent records  
-✅ **Professional GUI:** Organized 6-tab interface  
-✅ **Complete Syllabus Coverage:** All essential DS topics demonstrated  
-✅ **Easy Maintenance:** Modular code structure  
-✅ **Scalable Design:** Can handle thousands of books/members  
+✅ **Modern Full-Stack Application:** Production-grade web app with REST API  
+✅ **7 Custom Data Structures:** All implemented from scratch in Java  
+✅ **Optimal Performance:** O(1) hash lookups, O(log n) tree searches  
+✅ **Real-World Application:** Actual library management functionality  
+✅ **Professional UI:** Modern React interface with Tailwind CSS  
+✅ **Production Deployment:** Live on Render + Vercel  
+✅ **Complete Syllabus Coverage:** 100% of essential DS topics  
+✅ **Scalable Architecture:** Clean separation of concerns  
 
 ### Learning Outcomes
 
-1. **Practical DS Application:** Understanding when and why to use each structure
-2. **Performance Analysis:** Real comparison of time complexities
-3. **System Design:** Integrating multiple components cohesively
-4. **GUI Development:** Creating professional user interfaces
-5. **File I/O:** Implementing data persistence
-6. **Problem Solving:** Library management challenges solved efficiently
+**Technical Skills:**
+1. **Data Structures:** Deep understanding of when and why to use each structure
+2. **Spring Boot:** RESTful API development, dependency injection, service layer
+3. **React:** Component-based UI, hooks, routing, state management
+4. **Full-Stack Integration:** CORS, API design, client-server communication
+5. **Deployment:** Cloud platforms (Render, Vercel), CI/CD concepts
+
+**Software Engineering:**
+- Clean code principles
+- Modular architecture
+- API design best practices
+- Version control with Git
+- Production deployment
 
 ### Key Takeaways
 
-**Right DS Choice Matters:**
-- Hash table reduced member lookup from O(n) to O(1)
-- AVL tree guaranteed O(log n) vs potential O(n) in BST
-- Priority queue auto-sorted overdue books vs manual sorting
-- Trie enabled autocomplete that would be expensive otherwise
+**Right Data Structure Matters:**
+- CustomHashMap: Member lookup from O(n) to O(1)
+- AVL Tree: Guaranteed O(log n) vs worst-case O(n) in BST
+- MinHeap: Auto-sorted overdue books vs manual sort O(n log n)
+- Trie: Autocomplete in O(p + k) vs naive O(n × m)
+- CircularQueue: FIFO fairness with O(1) operations
 
-**Integration is Key:**
-- Same book exists in multiple structures serving different purposes
-- Synergy: Fast search (AVL) + Fast category filter (Hash) + Smart autocomplete (Trie)
+**Integration Excellence:**
+- Same book exists in 4 structures serving different purposes
+- Synergy: Fast ID search (AVL) + Fast category filter (HashMap) + Smart autocomplete (Trie) + Primary storage (LinkedList)
+- Each structure optimizes specific operations
 
-**Real-World > Theory:**
-- Understanding WHY each DS used > just implementing it
-- Library context makes DS concepts tangible
-- Easy to explain and justify choices
+**Modern Web vs Desktop:**
+- Stateless REST API enables multiple clients
+- React SPA provides smooth user experience
+- Cloud deployment ensures 24/7 availability
+- Modular architecture allows independent scaling
+
+**Real-World Application:**
+- Library context makes abstract DS concepts tangible
+- Easy to explain and justify choices to non-technical users
+- Practical experience beyond theoretical knowledge
 
 ---
 
 ## References & Resources
 
 ### Documentation
-- Java SE Documentation: https://docs.oracle.com/javase/
-- Swing Tutorial: https://docs.oracle.com/javase/tutorial/uiswing/
-- Data Structures Textbook: [Your course textbook]
 
-### Code Repository
-- Project Location: `c:\Users\mohit\RVCE\DSA LAB EL\`
-- Main File: `RealisticLibraryApp.java`
-- Total Files: 14 Java files
+- **Spring Boot:** https://spring.io/projects/spring-boot
+- **Spring Framework:** https://docs.spring.io/spring-framework/reference/
+- **React:** https://react.dev/
+- **Vite:** https://vitejs.dev/
+- **Tailwind CSS:** https://tailwindcss.com/docs
 
-### Support
-For questions or issues, refer to:
-- Course instructor
-- Lab manual: DSA Laboratory syllabus
-- This documentation file
+### Tools
+
+- **Java SE 17:** https://docs.oracle.com/en/java/javase/17/
+- **Maven:** https://maven.apache.org/guides/
+- **Node.js:** https://nodejs.org/docs/
+- **Git:** https://git-scm.com/doc
+
+### Deployment
+
+- **Render:** https://render.com/docs
+- **Vercel:** https://vercel.com/docs
+
+### Learning Resources
+
+- **Data Structures:** Introduction to Algorithms (CLRS)
+- **Spring Boot:** Spring Boot in Action
+- **React:** Official React Tutorial
+- **REST API:** RESTful Web Services
 
 ---
 
-**Project Completion Date:** January 2026  
-**Author:** [Your Name]  
-**Institution:** RVCE  
+## Project Metadata
+
+**Project Name:** LibMaster  
+**Repository:** MohithGowda2807/LibMaster  
+**Academic Year:** 2025-2026  
 **Course:** Data Structures Laboratory  
-**Total Development Time:** [Estimated hours]  
-**Lines of Code:** 2,700+  
-**Documentation:** 3,500+ words  
+**Institution:** [Your Institution]  
+**Author:** Mohith Gowda  
+
+**Statistics:**
+- **Backend:** 17 Java files, ~2000 lines of code
+- **Frontend:** 12 JSX files, ~1500 lines of code
+- **Total:** ~3500 lines of code
+- **Data Structures:** 7 custom implementations
+- **API Endpoints:** 15+ REST endpoints
+- **UI Pages:** 8 React pages
+
+**Development Timeline:**
+- Planning & Design: 1 week
+- Backend Development: 2 weeks
+- Frontend Development: 2 weeks
+- Testing & Deployment: 1 week
+- **Total:** ~6 weeks
 
 ---
 
-## Appendix A: Command Reference
+## Appendix A: Quick Command Reference
+
+### Backend
 
 ```bash
-# Compilation
-javac *.java
+# Compile and run
+./mvnw clean install
+./mvnw spring-boot:run
 
-# Run Application
-java RealisticLibraryApp
+# Build JAR
+./mvnw clean package
 
-# Clean compiled files
-del *.class  # Windows
-rm *.class   # Linux/Mac
+# Run JAR
+java -jar target/backend-0.0.1-SNAPSHOT.jar
 
-# View saved data
-type library_books.txt     # Windows
-cat library_books.txt      # Linux/Mac
+# Custom port
+java -Dserver.port=9090 -jar target/backend-0.0.1-SNAPSHOT.jar
 ```
 
-## Appendix B: Quick Feature Reference
+### Frontend
 
-| Feature | Data Structure | Time Complexity | Location |
-|---------|---------------|-----------------|----------|
-| Add Book | Multiple | O(log n) | Books tab |
-| Find Member | Hash Table | O(1) | Members tab |
-| Issue Book | AVL + Hash | O(log n) | Issue/Return tab |
-| Search Title | Trie | O(p + k) | Search tab |
-| View Overdue | Min-Heap | O(1) peek | Fines tab |
-| Auto-save | File I/O | O(n) | On window close |
+```bash
+# Install dependencies
+npm install
+
+# Development server
+npm run dev
+
+# Production build
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
+```
+
+### Deployment
+
+```bash
+# Vercel deployment
+vercel --prod
+
+# Check deployment
+curl https://your-app.vercel.app
+```
+
+---
+
+## Appendix B: API Response Examples
+
+### GET /api/books
+
+```json
+[
+  {
+    "id": 101,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "category": "Fiction",
+    "totalCopies": 5,
+    "availableCopies": 3,
+    "timesIssued": 124
+  },
+  {
+    "id": 102,
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Tech",
+    "totalCopies": 3,
+    "availableCopies": 2,
+    "timesIssued": 45
+  }
+]
+```
+
+### GET /api/members/1/details
+
+```json
+{
+  "member": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "9876543210",
+    "registrationDate": "2026-01-15",
+    "currentBorrowedBooks": [101, 105],
+    "pendingFines": 25.50
+  },
+  "issuedBooks": [
+    {
+      "book": { "id": 101, "title": "The Great Gatsby", "author": "F. Scott Fitzgerald" },
+      "issueDate": "2026-01-20",
+      "dueDate": "2026-02-03",
+      "isOverdue": false
+    },
+    {
+      "book": { "id": 105, "title": "Data Structures", "author": "Lafore" },
+      "issueDate": "2026-01-10",
+      "dueDate": "2026-01-24",
+      "isOverdue": true
+    }
+  ],
+  "reservations": []
+}
+```
+
+### GET /api/overdue
+
+```json
+[
+  {
+    "bookId": 105,
+    "memberId": 1,
+    "memberName": "John Doe",
+    "bookTitle": "Data Structures",
+    "daysOverdue": 18,
+    "fine": 90.0
+  },
+  {
+    "bookId": 103,
+    "memberId": 5,
+    "memberName": "Jane Smith",
+    "bookTitle": "Python Basics",
+    "daysOverdue": 5,
+    "fine": 25.0
+  }
+]
+```
 
 ---
 
 **End of Documentation**
 
-*This comprehensive document covers all aspects of the Library Management System project for academic reporting, presentations, and evaluation purposes.*
+*This comprehensive document covers all aspects of the LibMaster Library Management System for academic reporting, presentations, and evaluation purposes.*
+
+**Last Updated:** February 2026  
+**Version:** 2.0  
+**Format:** Markdown

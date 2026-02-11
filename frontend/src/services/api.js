@@ -35,4 +35,8 @@ export const getBookReservations = (bookId) => api.get(`/reservations/${bookId}`
 // Enhanced Member Details
 export const getMemberDetails = (id) => api.get(`/members/${id}/details`);
 
+// Sample Data Loading
+export const loadSampleBooks = () => api.post('/load-sample-books');
+export const loadSampleMembers = () => api.post('/load-sample-members');
+
 export default api;

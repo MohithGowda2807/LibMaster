@@ -94,13 +94,31 @@ const Books = () => {
                     <h1 className="text-3xl font-bold text-slate-900">Book Collection</h1>
                     <p className="text-slate-500 mt-1">Manage library inventory</p>
                 </div>
-                <button
-                    onClick={() => setShowModal(true)}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm shadow-indigo-200"
-                >
-                    <Plus className="w-5 h-5" />
-                    <span>Add Book</span>
-                </button>
+                <div className="flex gap-3">
+                    <button
+                        onClick={async () => {
+                            try {
+                                const api = await import('../services/api');
+                                const res = await api.loadSampleBooks();
+                                alert(res.data.message);
+                                fetchBooks();
+                            } catch (err) {
+                                alert('Failed to load sample books');
+                            }
+                        }}
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm shadow-emerald-200"
+                    >
+                        <BookIcon className="w-5 h-5" />
+                        <span>Load Sample Books</span>
+                    </button>
+                    <button
+                        onClick={() => setShowModal(true)}
+                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm shadow-indigo-200"
+                    >
+                        <Plus className="w-5 h-5" />
+                        <span>Add Book</span>
+                    </button>
+                </div>
             </div>
 
             {/* Search Bar */}

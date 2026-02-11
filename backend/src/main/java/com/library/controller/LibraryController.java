@@ -111,4 +111,24 @@ public class LibraryController {
     public Map<String, Object> getMemberDetails(@PathVariable int id) {
         return libraryService.getMemberDetails(id);
     }
+    
+    // --- Sample Data Loading ---
+    
+    @PostMapping("/load-sample-books")
+    public ResponseEntity<Map<String, Object>> loadSampleBooks() {
+        List<Book> books = libraryService.loadSampleBooks();
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Successfully loaded " + books.size() + " sample books");
+        response.put("books", books);
+        return ResponseEntity.ok(response);
+    }
+    
+    @PostMapping("/load-sample-members")
+    public ResponseEntity<Map<String, Object>> loadSampleMembers() {
+        List<Member> members = libraryService.loadSampleMembers();
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Successfully loaded " + members.size() + " sample members");
+        response.put("members", members);
+        return ResponseEntity.ok(response);
+    }
 }
